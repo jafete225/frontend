@@ -73,11 +73,11 @@ const Header = () => {
                 <div className="flex items-center gap-2">
                  <Link to={role === 'doctor' ? '/doctors/profile/me' : '/users/profile/me'} className="flex items-center gap-2">
 
-                    <figure className='w-[35px] h-[35px] rounded-full cursor-pointer'>
+                    <figure className='w-[35px] h-[35px] rounded-full cursor-pointer '>
                       <img src={user.photo} className='w-full rounded-full' alt='User Avatar' />
                     </figure>
                     {/* Exibe o nome do usuário */}
-                    <span className="text-textColor font-semibold sm:hidden">{user.name}</span>
+                    <span className="text-textColor font-semibold hidden md:inline">{user.name}</span>
                   </Link>
                 </div>
               ) : (

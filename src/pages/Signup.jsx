@@ -2,7 +2,7 @@ import signupImg from "../assets/images/signup.gif";
 
 import { useState } from "react";
 import { Link, useNavigate } from "react-router-dom";
-import uploadImageCloudinary from "../../uploadCloudinary";
+import uploadImageCloudinary from "../utils/uploadCloudinary";
 import { BASE_URL } from "../utils/config";
 import { toast } from "react-toastify";
 import HashLoader from "react-spinners/HashLoader";
@@ -35,6 +35,7 @@ const Signup = () => {
       setPreviewURL(data.url);
       setFormData({ ...formData, photo: data.url });
       setSelectedFile(file);
+      console.log(data)
     }
   };
 

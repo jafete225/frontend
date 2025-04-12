@@ -1,7 +1,7 @@
 /* eslint-disable react/prop-types */
 import { useEffect, useState } from "react";
 import { useNavigate } from "react-router-dom";
-import uploadImageCloudinary from "../../../uploadCloudinary";
+import uploadImageCloudinary from "../../utils/uploadCloudinary";
 import { BASE_URL, token } from "../../utils/config";
 import { toast } from "react-toastify";
 import HashLoader from "react-spinners/HashLoader";

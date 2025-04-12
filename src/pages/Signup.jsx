@@ -36,6 +36,10 @@ const Signup = () => {
       setFormData({ ...formData, photo: data.url });
       setSelectedFile(file);
       console.log(data)
+
+      console.log("Cloud name:", import.meta.env.VITE_CLOUD_NAME);
+console.log("Upload preset:", import.meta.env.VITE_UPLOAD_PRESET);
+
     }
   };
 

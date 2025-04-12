@@ -7,6 +7,7 @@ const uploadImageCloudinary = async (file) => {
 
     uploadDate.append("file", file);
     uploadDate.append("upload_preset", upload_preset);
+    console.log(upload_preset, cloud_name)
 
   
     const res = await fetch(

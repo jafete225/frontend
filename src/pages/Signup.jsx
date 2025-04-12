@@ -2,10 +2,10 @@ import signupImg from "../assets/images/signup.gif";
 
 import { useState } from "react";
 import { Link, useNavigate } from "react-router-dom";
-import uploadImageCloudinary from "../utils/uploadCloudinary";
+import uploadImageCloudinary from "../../uploadCloudinary";
 import { BASE_URL } from "../utils/config";
-import { toast } from 'react-toastify';
-import HashLoader from 'react-spinners/HashLoader';
+import { toast } from "react-toastify";
+import HashLoader from "react-spinners/HashLoader";
 
 const Signup = () => {
   const [selectedFile, setSelectedFile] = useState(null);
@@ -13,12 +13,12 @@ const Signup = () => {
   const [loading, setLoading] = useState(false);
 
   const [formData, setFormData] = useState({
-    name: '',
-    email: '',
-    password: '',
+    name: "",
+    email: "",
+    password: "",
     photo: selectedFile,
-    gender: '',
-    role: 'patient',
+    gender: "",
+    role: "patient",
   });
 
   const navigate = useNavigate();
@@ -46,9 +46,9 @@ const Signup = () => {
       const res = await fetch(`${BASE_URL}/auth/register`, {
         method: "post",
         headers: {
-          'Content-Type': 'application/json'
+          "Content-Type": "application/json",
         },
-        body: JSON.stringify(formData)
+        body: JSON.stringify(formData),
       });
 
       const { message } = await res.json();
@@ -59,7 +59,7 @@ const Signup = () => {
 
       setLoading(false);
       toast.success(message);
-      navigate('/login');
+      navigate("/login");
     } catch (err) {
       toast.error(err.message);
       setLoading(false);
@@ -73,7 +73,11 @@ const Signup = () => {
           {/*================= Image BOX ============== */}
           <div className="rounded-l-lg">
             <figure className="rounded-l-lg">
-              <img src={signupImg} alt="" className="w-full h-full object-cover" />
+              <img
+                src={signupImg}
+                alt=""
+                className="w-full h-full object-cover"
+              />
             </figure>
           </div>
 
@@ -152,7 +156,11 @@ const Signup = () => {
               <div className="mb-5 flex items-center gap-3">
                 {selectedFile && (
                   <figure className="w-[60px] h-[60px] rounded-full border-2 border-solid border-primaryColor flex items-center justify-center">
-                    <img src={previewURL} alt="Avatar" className="w-full rounded-full" />
+                    <img
+                      src={previewURL}
+                      alt="Avatar"
+                      className="w-full rounded-full"
+                    />
                   </figure>
                 )}
 
@@ -180,13 +188,20 @@ const Signup = () => {
                   type="submit"
                   className="w-full py-4 text-white text-[18px] font-semibold rounded-lg bg-gradient-to-r from-blue-500 to-blue-700 hover:from-blue-700 hover:to-blue-500 shadow-md hover:shadow-xl transition-all duration-300 ease-in-out transform hover:scale-105"
                 >
-                  {loading ? <HashLoader size={35} color="#ffffff" /> : 'Inscrever-se'}
+                  {loading ? (
+                    <HashLoader size={35} color="#ffffff" />
+                  ) : (
+                    "Inscrever-se"
+                  )}
                 </button>
               </div>
 
               <p className="mt-5 text-center text-gray-600 text-[15px]">
                 Tem uma conta aqui?{" "}
-                <Link to='/login' className="text-blue-600 font-medium hover:text-blue-700 transition-all">
+                <Link
+                  to="/login"
+                  className="text-blue-600 font-medium hover:text-blue-700 transition-all"
+                >
                   Entre
                 </Link>
               </p>

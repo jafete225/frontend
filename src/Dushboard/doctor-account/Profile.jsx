@@ -1,7 +1,7 @@
 /* eslint-disable react/prop-types */
 import { useState } from "react";
 import { AiOutlineDelete } from "react-icons/ai";
-import uploadImageToCloudinary from "./../../utils/uploadCloudinary";
+import uploadImageToCloudinary from "../../../uploadCloudinary";
 import { BASE_URL, token } from "./../../utils/config";
 import { toast } from "react-toastify";
 

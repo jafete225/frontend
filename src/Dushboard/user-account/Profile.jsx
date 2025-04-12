@@ -1,23 +1,23 @@
 /* eslint-disable react/prop-types */
 import { useEffect, useState } from "react";
 import { useNavigate } from "react-router-dom";
-import uploadImageCloudinary from "../../utils/uploadCloudinary";
+import uploadImageCloudinary from "../../../uploadCloudinary";
 import { BASE_URL, token } from "../../utils/config";
-import { toast } from 'react-toastify';
-import HashLoader from 'react-spinners/HashLoader';
-import bcrypt from 'bcryptjs'; 
+import { toast } from "react-toastify";
+import HashLoader from "react-spinners/HashLoader";
+import bcrypt from "bcryptjs";
 
 const Profile = ({ user }) => {
   const [selectedFile, setSelectedFile] = useState(null);
   const [loading, setLoading] = useState(false);
 
   const [formData, setFormData] = useState({
-    name: '',
-    email: '',
-    password: '',
+    name: "",
+    email: "",
+    password: "",
     photo: null,
-    gender: '',
-    bloodType: '',
+    gender: "",
+    bloodType: "",
   });
 
   const navigate = useNavigate();
@@ -25,11 +25,11 @@ const Profile = ({ user }) => {
   // Preenche os dados do formulário com base nas informações do usuário
   useEffect(() => {
     setFormData({
-      name: user.name || '',
-      email: user.email || '',
+      name: user.name || "",
+      email: user.email || "",
       photo: user.photo || null,
-      gender: user.gender || '',
-      bloodType: user.bloodType || ''
+      gender: user.gender || "",
+      bloodType: user.bloodType || "",
     });
   }, [user]);
 
@@ -39,7 +39,7 @@ const Profile = ({ user }) => {
 
   const handleFileInputChange = async (event) => {
     const file = event.target.files[0];
-    
+
     if (file) {
       const data = await uploadImageCloudinary(file);
       setFormData({ ...formData, photo: data.url });
@@ -64,30 +64,30 @@ const Profile = ({ user }) => {
 
     try {
       const res = await fetch(`${BASE_URL}/users/${user._id}`, {
-        method: 'put',
+        method: "put",
         headers: {
-          'Content-Type': 'application/json',
+          "Content-Type": "application/json",
           Authorization: `Bearer ${token}`,
         },
         body: JSON.stringify(updatedFormData),
       });
 
       // Verifica o tipo de conteúdo da resposta
-      const contentType = res.headers.get('content-type');
-      
+      const contentType = res.headers.get("content-type");
+
       if (!res.ok) {
-        throw new Error('Falha na requisição');
+        throw new Error("Falha na requisição");
       }
 
-      if (contentType && contentType.includes('application/json')) {
+      if (contentType && contentType.includes("application/json")) {
         const { message } = await res.json();
         toast.success(message);
       } else {
-        throw new Error('Resposta não é JSON');
+        throw new Error("Resposta não é JSON");
       }
 
       setLoading(false);
-      navigate('/users/profile/me');
+      navigate("/users/profile/me");
     } catch (err) {
       toast.error(err.message);
       setLoading(false);
@@ -170,7 +170,11 @@ const Profile = ({ user }) => {
         <div className="mb-5 flex items-center gap-3">
           {formData.photo && (
             <figure className="w-[60px] h-[60px] rounded-full border-2 border-solid border-primaryColor flex items-center justify-center">
-              <img src={formData.photo} alt="Avatar" className="w-full rounded-full" />
+              <img
+                src={formData.photo}
+                alt="Avatar"
+                className="w-full rounded-full"
+              />
             </figure>
           )}
 
@@ -199,7 +203,7 @@ const Profile = ({ user }) => {
             type="submit"
             className="w-full py-4 text-white text-[18px] font-semibold rounded-lg bg-gradient-to-r from-blue-500 to-blue-700 hover:from-blue-700 hover:to-blue-500 shadow-md hover:shadow-xl transition-all duration-300 ease-in-out transform hover:scale-105"
           >
-            {loading ? <HashLoader size={35} color="#ffffff" /> : 'Atualizar'}
+            {loading ? <HashLoader size={35} color="#ffffff" /> : "Atualizar"}
           </button>
         </div>
       </form>

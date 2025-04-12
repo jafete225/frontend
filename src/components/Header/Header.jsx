@@ -77,7 +77,7 @@ const Header = () => {
                       <img src={user.photo} className='w-full rounded-full' alt='User Avatar' />
                     </figure>
                     {/* Exibe o nome do usuário */}
-                    <span className="text-textColor font-semibold md:hidden">{user.name}</span>
+                    <span className="text-textColor font-semibold sm:hidden">{user.name}</span>
                   </Link>
                 </div>
               ) : (

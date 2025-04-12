@@ -77,7 +77,8 @@ const Header = () => {
                       <img src={user.photo} className='w-full rounded-full' alt='User Avatar' />
                     </figure>
                     {/* Exibe o nome do usuário */}
-                    <span className="text-textColor font-semibold hidden md:inline">{user.name}</span>
+                    <span className="text-textColor font-semibold hidden md:inline">{user.name.split(' ')[0]}</span>
+
                   </Link>
                 </div>
               ) : (

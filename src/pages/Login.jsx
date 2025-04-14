@@ -6,6 +6,9 @@ import { AuthContext } from "../../context/AuthContext.jsx";
 import HashLoader from 'react-spinners/HashLoader';
 
 const Login = () => {
+
+  
+  
   const [formData, setFormData] = useState({
     email: '',
     password: ''
@@ -14,6 +17,10 @@ const Login = () => {
   const [loading, setLoading] = useState(false);
   const navigate = useNavigate();
   const { dispatch } = useContext(AuthContext);  
+
+  const handleClick = () => {
+    navigate("/home");
+  };
 
   const handleInputChange = (e) => {
     setFormData({ ...formData, [e.target.name]: e.target.value });
@@ -92,6 +99,7 @@ const Login = () => {
             <button
               type="submit"
               className="w-full py-4 text-white text-[18px] font-semibold rounded-lg bg-gradient-to-r from-blue-500 to-blue-700 hover:from-blue-700 hover:to-blue-500 shadow-md hover:shadow-xl transition-all duration-300 ease-in-out transform hover:scale-105"
+              onClick={handleClick}
             >
               {loading ? <HashLoader size={25} color='#fff' /> : 'Entrar'}
             </button>

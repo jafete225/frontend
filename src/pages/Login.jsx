@@ -52,7 +52,7 @@ const Login = () => {
       toast.success(result.message);
       setTimeout(() => {
         window.location.href = '/home';
-      }, 1000); 
+      }, 3000); 
 
       setLoading(false);
       toast.success(result.message);
